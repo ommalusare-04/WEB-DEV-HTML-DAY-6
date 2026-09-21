@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 17 Exercises - More CSS Features</title>
+  <style>
+    /* Basic Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Roboto, Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+
+    /* Grid Layout for Videos */
+    .video-grid {
+      display: grid;
+      /* Responsive grid: fits as many 300px columns as possible */
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1400px; /* Expanded max-width slightly for more videos */
+      margin: 0 auto;
+    }
+
+    /* Individual Video Card */
+    .video-card {
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    /* Thumbnail Container */
+    .thumbnail-container {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9; /* Keeps thumbnails perfectly rectangular */
+    }
+
+    .thumbnail-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Video Duration Timestamp */
+    .video-time {
+      position: absolute;
+      bottom: 8px;
+      right: 8px;
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 2px 4px;
+      border-radius: 2px;
+    }
+
+    /* Video Info Section */
+    .video-info-grid {
+      display: grid;
+      grid-template-columns: 36px 1fr; /* 36px for avatar, rest for text */
+      column-gap: 12px;
+      padding: 12px;
+    }
+
+    .channel-avatar img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Video Title */
+    .video-title {
+      font-size: 14px; /* Default size */
+      font-weight: 500;
+      line-height: 20px; /* Default line-height */
+      color: #0f0f0f;
+      margin-bottom: 4px;
+      /* Clamp text to 2 lines just like real YouTube */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Video Author and Stats */
+    .video-author, .video-stats {
+      font-size: 12px; /* Default size */
+      color: #606060;
+      line-height: 18px;
+    }
+
+    /* =========================================
+       LESSON 17 EXERCISE 17a CODE
+       ========================================= */
+    @media (min-width: 1000px) {
+      /* For video titles, set font-size = 16px, line-height = 24px */
+      .video-title {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      /* For other text, set font-size = 14px */
+      .video-author, 
+      .video-stats {
+        font-size: 14px;
+      }
+    }
+    /* ========================================= */
+
+  </style>
+</head>
+<body>
+
+  <!-- Grid Container -->
+  <div class="video-grid">
+    
+    <!-- ================= VIDEO 1 ================= -->
+    <div class="video-card">
+      <div class="thumbnail-container">
+        <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" alt="Talking Tech Thumbnail">
+        <div class="video-time">14:20</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-avatar">
+          <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=100&q=80" alt="Marques Brownlee">
+        </div>
+        <div class="video-text">
+          <p class="video-title">Talking Tech and AI with Google CEO Sundar Pichai!</p>
+          <p class="video-author">Marques Brownlee</p>
+          <p class="video-stats">3.4M views &middot; 6 months ago</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIDEO 2 ================= -->
+    <div class="video-card">
+      <div class="thumbnail-container">
+        <img src="https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=600&q=80" alt="Try Not To Laugh Thumbnail">
+        <div class="video-time">8:22</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-avatar">
+          <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=100&q=80" alt="Markiplier">
+        </div>
+        <div class="video-text">
+          <p class="video-title">Try Not To Laugh Challenge #9</p>
+          <p class="video-author">Markiplier</p>
+          <p class="video-stats">19M views &middot; 4 years ago</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIDEO 3 ================= -->
+    <div class="video-card">
+      <div class="thumbnail-container">
+        <img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?auto=format&fit=crop&w=600&q=80" alt="Crazy Tik Toks Thumbnail">
+        <div class="video-time">9:13</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-avatar">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="SSSniperWolf">
+        </div>
+        <div class="video-text">
+          <p class="video-title">Crazy Tik Toks Taken Moments Before DISASTER</p>
+          <p class="video-author">SSSniperWolf</p>
+          <p class="video-stats">12M views &middot; 1 year ago</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIDEO 4 ================= -->
+    <div class="video-card">
+      <div class="thumbnail-container">
+        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80" alt="Coding Thumbnail">
+        <div class="video-time">22:09</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-avatar">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="Fireship">
+        </div>
+        <div class="video-text">
+          <p class="video-title">The Simplest Math Problem No One Can Solve</p>
+          <p class="video-author">Veritasium</p>
+          <p class="video-stats">12M views &middot; 2 years ago</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIDEO 5 ================= -->
+    <div class="video-card">
+      <div class="thumbnail-container">
+        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Matrix Thumbnail">
+        <div class="video-time">11:17</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-avatar">
+          <img src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=100&q=80" alt="Techquickie">
+        </div>
+        <div class="video-text">
+          <p class="video-title">Kadane's Algorithm to Maximum Sum Subarray Problem</p>
+          <p class="video-author">CS Dojo</p>
+          <p class="video-stats">519K views &middot; 5 years ago</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIDEO 6 ================= -->
+    <div class="video-card">
+      <div class="thumbnail-container">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" alt="Office Thumbnail">
+        <div class="video-time">19:59</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-avatar">
+          <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=100&q=80" alt="MrWhosetheboss">
+        </div>
+        <div class="video-text">
+          <p class="video-title">Anything You Can Fit In The Circle I'll Pay For</p>
+          <p class="video-author">MrBeast</p>
+          <p class="video-stats">141M views &middot; 1 year ago</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIDEO 7 ================= -->
+    <div class="video-card">
+      <div class="thumbnail-container">
+        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80" alt="Space Thumbnail">
+        <div class="video-time">10:13</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-avatar">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Kurzgesagt">
+        </div>
+        <div class="video-text">
+          <p class="video-title">Why Planes Don't Fly Over the Pacific Ocean</p>
+          <p class="video-author">RealLifeLore</p>
+          <p class="video-stats">5.5M views &middot; 2 years ago</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIDEO 8 ================= -->
+    <div class="video-card">
+      <div class="thumbnail-container">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80" alt="Coding Setup Thumbnail">
+        <div class="video-time">13:12</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-avatar">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=100&q=80" alt="Fireship">
+        </div>
+        <div class="video-text">
+          <p class="video-title">The Man Who Knew 75 Languages</p>
+          <p class="video-author">Half as Interesting</p>
+          <p class="video-stats">2.1M views &middot; 3 years ago</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIDEO 9 ================= -->
+    <div class="video-card">
+      <div class="thumbnail-container">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80" alt="Team Thumbnail">
+        <div class="video-time">7:12</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-avatar">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=100&q=80" alt="Ali Abdaal">
+        </div>
+        <div class="video-text">
+          <p class="video-title">How to Speak Fluently in Any Language</p>
+          <p class="video-author">Ali Abdaal</p>
+          <p class="video-stats">1.2M views &middot; 8 months ago</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIDEO 10 ================= -->
+    <div class="video-card">
+      <div class="thumbnail-container">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Code Thumbnail">
+        <div class="video-time">20:00</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-avatar">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="CodeWithHarry">
+        </div>
+        <div class="video-text">
+          <p class="video-title">Learn JavaScript in 1 Hour - Full Tutorial for Beginners</p>
+          <p class="video-author">Programming with Mosh</p>
+          <p class="video-stats">8M views &middot; 4 years ago</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIDEO 11 ================= -->
+    <div class="video-card">
+      <div class="thumbnail-container">
+        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=600&q=80" alt="Social Media Thumbnail">
+        <div class="video-time">5:34</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-avatar">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Matt D'Avella">
+        </div>
+        <div class="video-text">
+          <p class="video-title">I Quit Social Media For 30 Days</p>
+          <p class="video-author">Matt D'Avella</p>
+          <p class="video-stats">4.5M views &middot; 5 years ago</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VIDEO 12 ================= -->
+    <div class="video-card">
+      <div class="thumbnail-container">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Hardware Thumbnail">
+        <div class="video-time">18:45</div>
+      </div>
+      <div class="video-info-grid">
+        <div class="channel-avatar">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="Linus Tech Tips">
+        </div>
+        <div class="video-text">
+          <p class="video-title">I Built a $10,000 PC - The Ultimate Gaming Machine</p>
+          <p class="video-author">Linus Tech Tips</p>
+          <p class="video-stats">6.2M views &middot; 1 year ago</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
